@@ -1,0 +1,36 @@
+<app-navbar-home></app-navbar-home>
+<div class="dieta-form-container">
+  <div class="dieta-form-header">
+    Agregar Dieta
+  </div>
+  
+  <form [formGroup]="dietaForm" (ngSubmit)="onSubmit()">
+    <!-- Nombre de la dieta -->
+    <mat-form-field appearance="fill" class="dieta-form-field">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" />
+      <mat-error *ngIf="dietaForm.get('nombre')?.hasError('required')">
+        El nombre es un campo <strong>obligatorio</strong>
+      </mat-error>
+      <mat-error *ngIf="dietaForm.get('nombre')?.hasError('minlength')">
+        El nombre debe tener al menos <strong>3 caracteres</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Indicaciones -->
+    <mat-form-field appearance="fill" class="dieta-form-field">
+      <mat-label>Indicaciones</mat-label>
+      <input matInput formControlName="indicaciones" />
+      <mat-error *ngIf="dietaForm.get('indicaciones')?.hasError('required')">
+        Indicaciones es un campo <strong>obligatorio</strong>
+      </mat-error>
+    </mat-form-field>
+    
+    <!-- Botón de Registrar -->
+    <div class="dieta-form-button-container">
+      <button mat-raised-button color="accent" type="submit" [disabled]="dietaForm.invalid" class="dieta-form-button">
+        Agregar dieta
+      </button>
+    </div>
+  </form>
+</div>

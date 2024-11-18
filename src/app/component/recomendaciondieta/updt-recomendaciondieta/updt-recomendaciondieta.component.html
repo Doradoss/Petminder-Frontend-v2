@@ -1,0 +1,31 @@
+<div class="form-container">
+    <h2 *ngIf="!recomendacion">Registrar Recomendación de Dieta</h2>
+    <h2 *ngIf="recomendacion">Editar Recomendación de Dieta</h2>
+  
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- Fecha -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Fecha</mat-label>
+        <input matInput [matDatepicker]="datePicker" formControlName="fecha" />
+        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+        <mat-datepicker #datePicker></mat-datepicker>
+      </mat-form-field>
+  
+      <!-- Dieta -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Dieta</mat-label>
+        <mat-select formControlName="dieta_id">
+          <mat-option *ngFor="let dieta of dietas" [value]="dieta.id">
+            {{ dieta.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <!-- Botones -->
+      <div class="action-buttons">
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Guardar</button>
+        <button mat-raised-button color="warn" type="button" (click)="cancel()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+  

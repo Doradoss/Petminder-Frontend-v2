@@ -1,0 +1,68 @@
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #833DE7;
+    border-radius: 12px;
+    padding: 24px;
+    width: 50%;
+    margin: 0 auto;
+    font-family: 'Ubuntu', sans-serif;
+    color: #FFFFFF;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: #f3e8ff;
+    border-radius: 12px; /* Bordes redondeados */
+    color: #000000;
+    padding: 5px;
+  }
+
+::ng-deep .mat-form-field-placeholder {
+    color: rgba(0, 0, 0, 0.6); /* Texto guía con opacidad */
+}
+
+::ng-deep .mat-form-field-wrapper {
+    border-radius: 12px; /* Bordes internos redondeados */
+  }
+  
+  ::ng-deep .mat-form-field-outline-start,
+  ::ng-deep .mat-form-field-outline-end {
+    border-radius: 12px; /* Asegurar que la línea del borde también sea redondeada */
+  }
+
+button {
+    width: 100%;
+    border-radius: 8px;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  
+  button.registrar, button.editar {
+    background-color: #FBC43C; /* Color amarillo */
+    color: #333333;
+    margin-bottom: 10px; /* Espacio entre los botones */
+  }
+  
+  button.cancelar {
+    background-color: red;
+    color: white;
+  }
+  
+
+.titulo-formulario {
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #FFF9EB; /* Color blanco */
+   
+    padding: 10px;
+    border-radius: 10px;
+  }
+  

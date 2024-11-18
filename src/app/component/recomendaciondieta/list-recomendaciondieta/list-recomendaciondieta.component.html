@@ -1,0 +1,53 @@
+<div class="recomendacion-container">
+    <h2>Recomendaciones de Dieta</h2>
+  
+    <!-- Información de la Mascota -->
+    <div class="mascota-info">
+      <p><strong>Nombre:</strong> {{ mascota.nombre }}</p>
+      <p><strong>Especie:</strong> {{ mascota.especie }}</p>
+      <p><strong>Raza:</strong> {{ mascota.raza }}</p>
+      <p><strong>Edad:</strong> {{ mascota.edad }} años</p>
+    </div>
+  
+    <!-- Botones de control -->
+    <div class="action-buttons">
+      <button mat-raised-button color="primary" (click)="openForm(null)">Registrar nueva recomendación</button>
+      <button mat-raised-button color="warn" (click)="cancelAndEmit()">Cancelar</button>
+    </div>
+  
+    <!-- Listado de recomendaciones -->
+    <div *ngIf="!isFormOpen">
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let recomendacion of recomendaciones">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ recomendacion.nombreDieta }}
+              <span *ngIf="recomendacion.fecha">({{ recomendacion.fecha | date: 'shortDate' }})</span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+  
+          <p><strong>ID:</strong> {{ recomendacion.id }}</p>
+          <p><strong>Indicaciones:</strong> {{ recomendacion.indicaciones }}</p>
+  
+          <div class="panel-buttons">
+            <button mat-icon-button color="primary" (click)="openForm(recomendacion)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteRecomendacion(recomendacion.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  
+    <!-- Formulario de edición/registro -->
+    <div *ngIf="isFormOpen && mascota">
+      <app-updt-recomendaciondieta
+        [mascota]="mascota"
+        [recomendacion]="selectedRecomendacion"
+        (formClosed)="closeForm()">
+      </app-updt-recomendaciondieta>
+    </div>
+  </div>
+  

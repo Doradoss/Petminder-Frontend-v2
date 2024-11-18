@@ -1,0 +1,222 @@
+.container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 25%;
+    background-color: #f9f6e8;
+    padding: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Añadido: Scroll en el sidebar */
+  }
+  
+  .sidebar .add-mascota-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #FBC43C;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+  
+  .mascota-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .mascota-item {
+    display: flex;
+    align-items: flex-start; /* Ajustado para mejor alineación */
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative; /* Añadido para posicionar bien el contenido interno */
+  }
+  
+  .menu-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 10px; /* Añadido para espacio entre el menú y el nombre */
+  }
+  
+  .option-btn {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 5px;
+    text-align: left;
+    background-color: #f3e8ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .edit-btn,
+  .delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px; /* Añadido para separar los botones de edición */
+  }
+  
+  .right-buttons {
+    display: flex;
+    gap: 5px; /* Añadido para espaciado entre los botones */
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .welcome {
+    text-align: center;
+    color: #6b46c1;
+    font-size: 1.5em;
+  }
+  
+  .mascota-details {
+    background-color: #833DE7;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .details-box p {
+    margin: 5px 0;
+  }
+  
+  /* Barra de búsqueda */
+  .search-bar {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Opciones debajo del nombre */
+  .mascota-options {
+    display: block; /* Cambiado para mostrar debajo */
+    margin-top: 10px; /* Espaciado entre el nombre y las opciones */
+  }
+  
+  /*CHART*/
+  .chart-container {
+    width: 80%;
+    margin: 20px auto; /* Centra el gráfico */
+    background: #f9f6e8; /* Fondo claro */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+
+
+  /*SCROLL*/
+/* Scroll universal para Firefox y otros navegadores que soportan scrollbar-width */
+.sidebar {
+    scrollbar-width: thin; /* Scroll delgado */
+    scrollbar-color: #FBC43C transparent; /* Thumb amarillo, fondo transparente */
+  }
+  
+  /* Scroll específico para navegadores WebKit (Chrome, Safari, Edge Chromium) */
+  .sidebar::-webkit-scrollbar {
+    width: 10px; /* Ancho del scrollbar */
+  }
+  
+  .sidebar::-webkit-scrollbar-track {
+    background: transparent; /* Fondo transparente */
+  }
+  
+  .sidebar::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #FBC43C, #FFDD66); /* Degradado amarillo */
+    border-radius: 8px; /* Bordes redondeados */
+    border: 2px solid transparent; /* Espacio interno */
+    background-clip: padding-box; /* Evitar que el borde sobresalga */
+  }
+  
+  .sidebar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #E8AA00, #FBC43C); /* Amarillo más oscuro al hover */
+  }
+  
+
+  /*BOTON CANCELAR DE INFORMACION DE MASCOTA*/
+  .cancel-btn {
+    background-color: #ff6b6b; /* Rojo claro */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #ff5252; /* Rojo más oscuro */
+  }
+  
+
+  /*HISTORIAL*/
+  .historial-container {
+    padding: 20px;
+    background-color: #fff3e0;
+    border-radius: 10px;
+  }
+  
+  .mascota-info {
+    background-color: #ffebcc;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .historial-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .historial-item {
+    background-color: #fffbf1;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .historial-header {
+    background-color: #ffd54f;
+    color: #333;
+    padding: 10px;
+    font-weight: bold;
+    border: none;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .historial-details {
+    padding: 10px;
+    background-color: #fffde7;
+  }
+
+  .dietas-container {
+    padding: 20px;
+    background-color: #e8f5e9;
+    border-radius: 10px;
+  }
+  
+  
+  

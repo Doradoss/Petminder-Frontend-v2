@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetMinder</title>
+  <link rel="stylesheet" href="home.component.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a routerLink="/home" class="logo">
+        <img src="/img/petminder_logo1.png" alt="PetMinder Logo">
+      </a>
+      <nav class="navbar">
+        <ul>
+          <li><a routerLink="/home">Inicio</a></li>
+          <li><a routerLink="/home">Sobre Nosotros</a></li>
+          <li><a routerLink="/home">Contacto</a></li>
+        </ul>
+      </nav>
+      <a routerLink="/login" class="login-button">Iniciar Sesión</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="/img/icono.png" alt="Icono" class="hero-icon">
+      <h1>El mejor lugar para el mejor amigo</h1>
+      <div class="hero-buttons">
+        <a routerLink="/home" class="button">Sobre nosotros</a>
+        <a routerLink="/home" class="button secondary">Contáctenos</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="/img/Perro-home.jpg" alt="Hero Dog">
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services">
+    <h2 class="services-title">Los servicios que ofrecemos</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <img src="/img/5.jpg" alt="Veterinarios" class="service-image">
+        <h3>Veterinarios</h3>
+        <p>Los veterinarios en nuestra comunidad no solo son expertos, sino que aman y entienden a los animales como tú.</p>
+      </div>
+      <div class="service-card">
+        <img src="/img/1.jpg" alt="Recordatorios" class="service-image">
+        <h3>Recordatorios</h3>
+        <p>Desde vacunas hasta sus paseos, mantente al día con cada detalle de su bienestar.</p>
+      </div>
+      <div class="service-card">
+        <img src="/img/6.jpg" alt="Dietas" class="service-image">
+        <h3>Dietas</h3>
+        <p>Diseña y sigue planes de alimentación personalizados para mantener a tu mascota saludable y llena de energía.</p>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Copyright ©2024 Todos los derechos reservados a PetMinder.</p>
+  </footer>
+</body>
+</html>

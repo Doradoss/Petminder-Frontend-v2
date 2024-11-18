@@ -1,0 +1,28 @@
+<mat-toolbar>
+  <!-- Logo -->
+  <img src="/img/petminder_logo1.png" alt="logo_petminder" style="width: 170px; height: 40px; margin-right: 10px;">
+
+  <span class="example-spacer"></span>
+  
+  <!-- Botones de navegación -->
+  <button mat-button routerLink="/home-secundario">Inicio</button>
+  
+  <!-- Botón de Mascotas con menú desplegable -->
+  <button mat-button routerLink="/mascota-list">Mascotas</button>
+  
+  <button mat-button routerLink="/recordatorio">Recordatorios</button>
+
+  <button mat-button routerLink="/tiporecordatorio">Tipos de Recordatorio</button>
+
+  <button mat-button routerLink="/dieta-list">Dietas</button>
+  
+  <!-- Icono para Notificaciones -->
+  <button mat-icon-button routerLink="/mascota-add" aria-label="Notificaciones">
+    <mat-icon>notifications</mat-icon>
+  </button>
+
+  
+
+  <!-- Botón de perfil con bordes curvos -->
+  <button mat-button routerLink="/login" class="perfil-button" (click)="cerrar()">Log out</button>
+</mat-toolbar>

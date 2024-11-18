@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/petminder/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

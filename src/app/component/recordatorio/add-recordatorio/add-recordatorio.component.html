@@ -1,0 +1,67 @@
+<app-navbar-home></app-navbar-home>
+<img class = "imagen" src="https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/NVWQSYGX3RC7ZBEHLPLDVXA3PU.jpg" alt="">
+<form [formGroup]="recordatorioForm" (ngSubmit)="registrarRecordatorio()">
+    <h3 class="recordatorio-title">Recordatorio de mi Amigo Peludo</h3>
+    <h3>{{day}}</h3>
+  
+    <div class="forms">
+      <h5 class="titulo">Registrar recordatorio</h5>
+  
+    <div class="form-group">
+        <label for="titulo">Título</label>
+        <mat-form-field>
+            <input matInput formControlName="titulo" id="titulo" placeholder="Ingrese el título del recordatorio">
+        </mat-form-field>
+    </div>
+
+    <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <mat-form-field>
+            <textarea matInput formControlName="descripcion" id="descripcion" placeholder="Ingrese la descripción"></textarea>
+        </mat-form-field>
+    </div>
+
+    <div class="form-group">
+        <label for="fecha">Fecha</label>
+        <mat-form-field>
+            <input matInput formControlName="fecha" [matDatepicker]="picker" id="fecha" placeholder="Selecciona una fecha"  readonly 
+            [min]="minFecha">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="recordatorioForm.get('fecha')?.hasError('fechaInvalida')">
+                La fecha no puede ser anterior a hoy.
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form-group">
+        <label for="hora">Hora</label>
+        <mat-form-field>
+            <input matInput formControlName="hora" type="time" id="hora" placeholder="Selecciona una hora">
+        </mat-form-field>
+    </div>
+
+    <div class="form-group">
+        <label for="tipoRecordatorio">Tipo de Recordatorio</label>
+        <mat-form-field>
+            <mat-select formControlName="tipoRecordatorioId" id="tipoRecordatorio" placeholder="Selecciona un tipo de recordatorio">
+                <mat-option *ngFor="let tipo of tiposRecordatorio" [value]="tipo.id">
+                    {{ tipo.nombre }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    
+
+    <div class="form-group">
+        <label>Estado</label>
+        <mat-radio-group formControlName="completado">
+          <mat-radio-button [value]="true">Completado</mat-radio-button>
+          <mat-radio-button [value]="false">Pendiente</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+    <button mat-raised-button class="boton-agregar" type="submit">Agregar recordatorio</button>
+    </div>
+  </form>

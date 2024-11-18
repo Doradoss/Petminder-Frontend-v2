@@ -1,0 +1,109 @@
+<app-navbar-home></app-navbar-home>
+<div class="container">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <button class="add-mascota-btn" (click)="toggleForm()">+ Agregar mascota</button>
+
+    <!-- Barra de búsqueda -->
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      (input)="filterMascotas()"
+      placeholder="Buscar mascota..."
+      class="search-bar"
+    />
+
+  <!-- Listado de mascotas -->
+  <ul class="mascota-list">
+    <li *ngFor="let mascota of filteredMascotas" class="mascota-item">
+      <div class="left-content">
+        <button class="menu-btn" (click)="toggleOptions(mascota.id)">☰</button>
+        <span (click)="showMascotaDetails(mascota)">{{ mascota.nombre }}</span>
+        <div class="mascota-options" *ngIf="expandedMascotaId === mascota.id">
+          <!-- Opción para ver historial médico -->
+          <button class="option-btn" (click)="viewHistorial(mascota)">Ver historial médico</button>
+          <!-- Opción para ver dietas personalizadas -->
+          <button class="option-btn" (click)="viewDietas(mascota)">Ver dietas personalizadas</button>
+        </div> <!-- Cierre del div.mascota-options -->
+      </div>
+      <div class="right-buttons">
+        <button mat-icon-button class="edit-btn" (click)="openEditForm(mascota)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" class="delete-btn" (click)="deleteMascota(mascota.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </li>
+  </ul>
+
+    
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Mostrar vista de bienvenida si no hay mascota seleccionada, formulario abierto ni historial -->
+    <div *ngIf="!selectedMascota && !isFormOpen && !showHistorial" class="welcome">
+      <h2>Bienvenido {{ username }}</h2>
+      <p>Puede ver los detalles de una mascota al darle click a su nombre</p>
+      <!-- Contenedor del gráfico -->
+      <div class="chart-container">
+        <apx-chart
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [xaxis]="chartOptions.xaxis"
+          [yaxis]="chartOptions.yaxis"
+          [plotOptions]="chartOptions.plotOptions"
+          [colors]="chartOptions.colors"
+          [dataLabels]="chartOptions.dataLabels">
+        </apx-chart>
+      </div>
+    </div>
+  
+<!-- Mostrar detalles de la mascota si hay una seleccionada y no hay formulario, historial ni dietas abiertas -->
+<div *ngIf="selectedMascota && !isFormOpen && !showHistorial && !showDietas" class="mascota-details">
+  <h3>Información de la Mascota</h3>
+  <div class="details-box">
+    <p><strong>Nombre:</strong> {{ selectedMascota.nombre }}</p>
+    <p><strong>Especie:</strong> {{ selectedMascota.especie }}</p>
+    <p><strong>Raza:</strong> {{ selectedMascota.raza }}</p>
+    <p><strong>Edad:</strong> {{ selectedMascota.edad }}</p>
+  </div>
+  <!-- Botón de Cancelar -->
+  <button class="cancel-btn" (click)="resetToDefaultView()">Cancelar</button>
+</div>
+
+  
+    <!-- Mostrar formulario si está abierto -->
+    <div *ngIf="isFormOpen && !showHistorial" class="form-container">
+      <app-updt-mascotas
+        [mascota]="editingMascota"
+        (formClosed)="closeForm()"
+        (formSubmitted)="refreshMascotas()">
+      </app-updt-mascotas>
+    </div>
+  
+    <!-- Mostrar historial médico -->
+    <div *ngIf="showHistorial && selectedMascota" class="historial-container">
+      <app-list-historialmedico
+        [mascota]="selectedMascota"
+        (refreshList)="refreshMascotas()"
+        (closeHistorial)="closeHistorialView()"
+        (onCancel)="resetToDefaultView()"> <!-- Escucha onCancel -->
+      </app-list-historialmedico>
+    </div>
+    
+    <!-- Mostrar recomendaciones de dieta -->
+  <div *ngIf="showDietas && selectedMascota" class="dietas-container">
+    <app-list-recomendaciondieta
+    [mascota]="selectedMascota"
+    (refreshList)="refreshMascotas()"
+    (closeDietas)="closeDietasView()"
+    (onCancel)="resetToDefaultView()"> <!-- Escucha onCancel -->
+  </app-list-recomendaciondieta>
+  
+  </div>
+
+
+  </div>
+</div>

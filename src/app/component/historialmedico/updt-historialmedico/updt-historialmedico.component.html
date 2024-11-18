@@ -1,0 +1,50 @@
+<div class="titulo-formulario">{{ historial ? 'Editar Historial Médico' : 'Registrar Historial Médico' }}</div>
+
+<form [formGroup]="historialForm" (ngSubmit)="onSubmit()">
+  <!-- Descripción -->
+  <mat-form-field appearance="fill">
+    <mat-label>Descripción</mat-label>
+    <textarea matInput formControlName="descripcion"></textarea>
+    <mat-error *ngIf="historialForm.get('descripcion')?.hasError('required')">
+      La descripción es un campo <strong>obligatorio</strong>.
+    </mat-error>
+    <mat-error *ngIf="historialForm.get('descripcion')?.hasError('maxlength')">
+      La descripción no debe exceder los <strong>255 caracteres</strong>.
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Diagnóstico -->
+  <mat-form-field appearance="fill">
+    <mat-label>Diagnóstico</mat-label>
+    <textarea matInput formControlName="diagnostico"></textarea>
+    <mat-error *ngIf="historialForm.get('diagnostico')?.hasError('required')">
+      El diagnóstico es un campo <strong>obligatorio</strong>.
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Tratamiento -->
+  <mat-form-field appearance="fill">
+    <mat-label>Tratamiento</mat-label>
+    <textarea matInput formControlName="tratamiento"></textarea>
+    <mat-error *ngIf="historialForm.get('tratamiento')?.hasError('required')">
+      El tratamiento es un campo <strong>obligatorio</strong>.
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Fecha -->
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="fecha" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="historialForm.get('fecha')?.hasError('required')">
+      La fecha es un campo <strong>obligatorio</strong>.
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Botones -->
+  <button mat-raised-button class="registrar" type="submit" [disabled]="historialForm.invalid">
+    {{ historial ? 'Actualizar' : 'Registrar' }}
+  </button>
+  <button mat-raised-button class="cancelar" type="button" (click)="closeForm()">Cancelar</button>
+</form>

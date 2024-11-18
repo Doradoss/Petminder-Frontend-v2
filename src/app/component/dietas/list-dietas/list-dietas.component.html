@@ -1,0 +1,45 @@
+<app-navbar-home></app-navbar-home>
+<div class="dietas-container">
+  <div class="titulo">Listado de Dietas</div>
+  
+  <!-- Formulario para buscar por fecha -->
+  <form [formGroup]="formFecha" (ngSubmit)="cargarDietasPorFecha()" style="display: flex; gap: 10px; align-items: center;">
+    <mat-form-field>
+      <mat-label>Fecha de creación*</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fecha" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <button type="submit" class="button-general search-button">Buscar por Fecha</button>
+    <button
+      type="button"
+      class="button-general reset-button"
+      *ngIf="mostrarBotonListadoGeneral"
+      (click)="listarTodas()"
+    >
+      Volver al Listado General
+    </button>
+  </form>
+
+  <!-- Listado de dietas -->
+  <div *ngFor="let dieta of dietas" class="dieta-card" (click)="toggleIndicaciones(dieta.id)">
+    <div class="dieta-info">
+      <div class="dieta-nombre">
+        {{ dieta.nombre }} <span *ngIf="dieta.fecha_creacion">({{ dieta.fecha_creacion | date: 'shortDate' }})</span>
+      </div>
+      <div class="dieta-indicaciones" *ngIf="dieta.expandida">
+        {{ dieta.indicaciones }}
+      </div>
+    </div>
+    <div class="dieta-actions">
+      <button mat-icon-button color="warn" (click)="deleteDieta(dieta.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button color="primary" [routerLink]="['/dieta-edit', dieta.id]">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <button routerLink="/dieta-add" class="button-general add-dieta-button">Agregar dieta</button>
+</div>

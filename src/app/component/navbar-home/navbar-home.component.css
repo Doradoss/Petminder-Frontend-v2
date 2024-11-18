@@ -1,0 +1,101 @@
+mat-toolbar {
+    background-color: #FBC43C;
+    color: #FFF9EB;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  mat-icon {
+    font-size: 24px;
+    color: #FFF9EB;
+  }
+  
+  button.mat-button {
+    color: #FFF9EB; /* Color del texto de los botones */
+  }
+  
+  .perfil-button {
+    background-color: #833DE7; /* Color de fondo del botón de Perfil */
+    color: #FFF9EB !important;  /* Color del texto en el botón de Perfil */
+    border-radius: 12px; /* Bordes curvos */
+    padding: 4px 12px;
+    margin-left: 8px;
+  }
+
+  .mascotas-menu {
+    position: relative;
+  }
+  
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #6A1B9A; /* Fondo morado */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .mascotas-menu:hover .submenu {
+    display: block; /* Muestra el menú al hacer hover */
+  }
+  
+  .submenu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+    cursor: pointer;
+  }
+  
+  .submenu-item:hover {
+    background-color: #5A1284; /* Color morado oscuro al hacer hover */
+  }
+  
+  .submenu-item span {
+    color: white;
+  }
+  
+  .icono-editar {
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  .agregar-mascota {
+    display: flex;
+    align-items: center;
+    color: white;
+    margin-top: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+  
+  .agregar-mascota mat-icon {
+    margin-right: 5px;
+  }
+  .submenu {
+    display: block;
+    padding: 10px;
+  }
+  
+  .submenu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px 0;
+  }
+  
+  .icono-editar,
+  .icono-eliminar {
+    margin-left: 10px;
+    cursor: pointer;
+  }

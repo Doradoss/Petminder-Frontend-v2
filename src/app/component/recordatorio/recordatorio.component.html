@@ -1,0 +1,51 @@
+<app-navbar-home></app-navbar-home>
+<mat-sidenav-container class="sidenav-container">
+    <!-- Sidenav con nombres de mascotas -->
+    <mat-sidenav mode="side" opened class="mascota-item">
+      <div *ngFor="let mascota of mascotas" class="mascota-item">
+        <span>{{ mascota.nombre }}</span>
+        
+        <button mat-icon-button (click)="listarRecordatorios(mascota.id);seleccionarMascotaPorId(mascota.id)">
+          <mat-icon>pets</mat-icon>
+        </button>      
+      </div>      
+    </mat-sidenav>
+  
+    <!-- Área principal con los recordatorios de la mascota seleccionada -->
+    <mat-sidenav-content>
+      <h3>Recordatorios - {{ selectedMascota }}</h3>    
+      <h3>{{ day }}</h3>
+  
+      <mat-card appearance="outlined" class="card" *ngFor="let recordatorio of recordatoriosActuales">
+        <mat-checkbox></mat-checkbox>
+        <mat-card-content>{{ recordatorio.titulo }}</mat-card-content>
+        <mat-card-content>{{ recordatorio.fecha }}</mat-card-content>
+        <mat-card-content>{{ recordatorio.time }}</mat-card-content>
+        <mat-card-content>{{ recordatorio.descripcion }}</mat-card-content>
+        <button mat-button (click)="eliminarRecordatorio(recordatorio)">
+          <mat-icon>delete</mat-icon> Eliminar
+        </button>
+      </mat-card> 
+      
+      <div class="totales-container">
+        <span>Recordatorios Completados: {{ recordatoriosCompletados }}</span>
+        <span>Recordatorios Pendientes: {{ recordatoriosPendientes }}</span>
+      </div>
+
+
+  
+      <button mat-button class="agregar-recordatorio" (click)="navegarAgregarRecordatorio()">Agregar Recordatorio</button>
+      <button mat-raised-button  class="completados" (click)="listarCompletados()">Mostrar Recordatorios Completados</button>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  
+
+
+  
+
+
+
+  
+

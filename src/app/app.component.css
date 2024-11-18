@@ -1,0 +1,46 @@
+.header {
+    background-color: #fdd835;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+.logo img {
+    max-height: 50px;
+  }
+  
+.navbar ul {
+  list-style: none; /* Elimina los puntos de la lista */
+  padding: 0;       /* Quita el padding interno de la lista */
+  margin: 0;        /* Quita el margen externo de la lista */
+  display: flex;    /* Asegura que los elementos estén en línea */
+  gap: 20px;        /* Espaciado entre los elementos de la lista */
+  }
+  
+.navbar ul li a {
+    text-decoration: none; /* Elimina el subrayado */
+    color: black;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+.navbar ul li a:hover {
+    background-color: #4a148c;
+    color: white;
+  }
+  
+@media (max-width: 768px) {
+    .navbar ul {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+}

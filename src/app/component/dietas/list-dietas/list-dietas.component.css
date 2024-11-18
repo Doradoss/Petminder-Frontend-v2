@@ -1,0 +1,99 @@
+/* Contenedor principal */
+.dietas-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Formulario de búsqueda */
+form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+/* Título */
+.titulo {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+/* Estilo de las tarjetas */
+.dieta-card {
+  width: 80%;
+  margin-bottom: 10px;
+  background-color: #fdd835;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.dieta-card:hover {
+  transform: scale(1.02);
+}
+
+/* Información de cada dieta */
+.dieta-info {
+  flex-grow: 1;
+}
+
+.dieta-nombre {
+  font-weight: bold;
+}
+
+.dieta-indicaciones {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Botones de acciones */
+.dieta-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Estilo de botones generales */
+.button-general {
+  padding: 10px 20px; /* Incrementa el tamaño del botón */
+  font-size: 16px; /* Aumenta el tamaño del texto */
+  border-radius: 8px; /* Menos redondeado para un estilo más elegante */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aumenta la sombra para más profundidad */
+  transition: transform 0.2s ease, background-color 0.3s ease; /* Añade animación */
+}
+
+.button-general:hover {
+  background-color: #fbc02d;
+  transform: scale(1.05); /* Agranda ligeramente el botón al pasar el mouse */
+}
+
+.button-general:active {
+  transform: scale(0.95); /* Da un efecto de clic */
+}
+/* Específico para el botón de agregar dieta */
+.add-dieta-button {
+  background-color: #fdd835;
+  margin-top: 20px;
+}
+
+/* Botones de buscar y listado general */
+.search-button {
+  background-color: #fdd835;
+  margin-right: 10px;
+  margin-left: 10px; /* Aumenta el margen para un espaciado consistente */
+  margin-bottom: 20px; /* Añade margen inferior para separar del listado */
+}
+
+.reset-button {
+  background-color: #fdd835;
+  margin-bottom: 20px; /* Añade margen inferior para separar del listado */
+}
+
+
+
