@@ -90,7 +90,7 @@ export class MascotaService {
   
   //Trae todas las mascotas de un usuario POR SU ID
   getMascotabyduenio(id: number): Observable<Mascota[]> {
-    return this.http.get<Mascota[]>(`${this.apiURL}/api/user/usuario/${id}`, {
+    return this.http.get<Mascota[]>(`${this.apiURL}/usuario/${id}`, {
       headers: this.getHeaders(),
     });
   }

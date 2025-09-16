@@ -33,9 +33,14 @@ export class RecordatorioService {
 
   //ListarRecordatorioPorMascota
   listarRecordatorioPorMascota(mascotaId: number): Observable<Recordatorio[]> {
-    let params = new HttpParams().set('mascotaId', mascotaId);    
-    return this.http.get<Recordatorio[]>(`${this.apiURL}/listar-recordatorio-por-mascota`, { params, headers: this.getHeaders() });
-  }  
+    const params = new HttpParams().set('mascotaId', mascotaId.toString());
+    console.log('URL generada:', `${this.apiURL}/listar-recordatorio-por-mascota`);
+    console.log('Parámetros enviados:', params.toString());
+    return this.http.get<Recordatorio[]>(`${this.apiURL}/listar-recordatorio-por-mascota`, {
+      params,
+      headers: this.getHeaders(),
+    });
+  }
 
   findByTipo(tipoRecordatorioId: number, page: number): Observable<any> {
     return this.http.get<any>(`${this.apiURL}/recordatorio-tipo?tipoRecordatorioId=${tipoRecordatorioId}&page=${page}`, { headers: this.getHeaders() });

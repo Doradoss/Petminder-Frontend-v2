@@ -4,11 +4,10 @@
     <mat-sidenav mode="side" opened class="mascota-item">
       <div *ngFor="let mascota of mascotas" class="mascota-item">
         <span>{{ mascota.nombre }}</span>
-        
-        <button mat-icon-button (click)="listarRecordatorios(mascota.id);seleccionarMascotaPorId(mascota.id)">
+        <button mat-icon-button (click)="listarRecordatorios(mascota.id); seleccionarMascotaPorId(mascota.id)">
           <mat-icon>pets</mat-icon>
-        </button>      
-      </div>      
+        </button>
+      </div>
     </mat-sidenav>
   
     <!-- Área principal con los recordatorios de la mascota seleccionada -->
@@ -16,16 +15,33 @@
       <h3>Recordatorios - {{ selectedMascota }}</h3>    
       <h3>{{ day }}</h3>
   
-      <mat-card appearance="outlined" class="card" *ngFor="let recordatorio of recordatoriosActuales">
-        <mat-checkbox></mat-checkbox>
-        <mat-card-content>{{ recordatorio.titulo }}</mat-card-content>
-        <mat-card-content>{{ recordatorio.fecha }}</mat-card-content>
-        <mat-card-content>{{ recordatorio.time }}</mat-card-content>
-        <mat-card-content>{{ recordatorio.descripcion }}</mat-card-content>
-        <button mat-button (click)="eliminarRecordatorio(recordatorio)">
-          <mat-icon>delete</mat-icon> Eliminar
-        </button>
-      </mat-card> 
+      <div *ngIf="recordatoriosActuales.length > 0; else noRecordatorios">
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let recordatorio of recordatoriosActuales">
+            <!-- Cabecera del panel -->
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ recordatorio.titulo }}
+              </mat-panel-title>
+              <mat-panel-description>
+                {{ recordatorio.fecha }} - {{ formatHora(recordatorio.hora) }}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+      
+            <!-- Contenido expandido -->
+            <p>{{ recordatorio.descripcion }}</p>
+            <div class="card-actions">
+              <button mat-button color="warn" (click)="eliminarRecordatorio(recordatorio)">
+                <mat-icon>delete</mat-icon> Eliminar
+              </button>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      
+      <ng-template #noRecordatorios>
+        <p>No hay recordatorios para esta mascota.</p>
+      </ng-template>
       
       <div class="totales-container">
         <span>Recordatorios Completados: {{ recordatoriosCompletados }}</span>

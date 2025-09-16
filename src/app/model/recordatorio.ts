@@ -6,7 +6,7 @@ export interface Recordatorio {
     titulo: string;
     descripcion: string;
     fecha: Date;
-    time: Date;
+    hora: string;
 }
 
 export interface RecordatorioDTO{
@@ -14,7 +14,7 @@ export interface RecordatorioDTO{
     titulo: string;
     descripcion: string;
     fecha: Date;
-    time: Date;
+    hora: string;
     mascota: Mascota;
     completado:boolean;  //añadido
     tipoRecordatorio: TipoRecordatorio;

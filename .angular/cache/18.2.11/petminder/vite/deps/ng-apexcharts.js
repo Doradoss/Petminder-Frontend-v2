@@ -1,6 +1,6 @@
 import {
   isPlatformBrowser
-} from "./chunk-5LIJO3BB.js";
+} from "./chunk-AEUOZSPH.js";
 import {
   ChangeDetectionStrategy,
   Component,
@@ -23,13 +23,13 @@ import {
   ɵɵloadQuery,
   ɵɵqueryRefresh,
   ɵɵviewQuery
-} from "./chunk-GSZ3T6IW.js";
+} from "./chunk-QKBWVJ2I.js";
 import {
   asapScheduler
-} from "./chunk-ZSY7TSMJ.js";
+} from "./chunk-2QQLL3PY.js";
 import {
   __async
-} from "./chunk-3OV72XIM.js";
+} from "./chunk-K4KU7J5H.js";
 
 // node_modules/ng-apexcharts/fesm2022/ng-apexcharts.mjs
 var _c0 = ["chart"];
@@ -62,7 +62,7 @@ var ChartComponent = class _ChartComponent {
     return __async(this, null, function* () {
       const {
         default: ApexCharts
-      } = yield import("./apexcharts.common-3LBIJVDR.js");
+      } = yield import("./apexcharts.common-UO7RTOZC.js");
       window.ApexCharts ||= ApexCharts;
       const options = {};
       if (this.annotations) {

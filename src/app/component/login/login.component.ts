@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('username', this.username); // Guarda el username
           console.log('Token guardado:', data.jwttoken); // Depuración
           console.log('Username guardado:', this.loginService.getUsername()); // Depuración
-          this.router.navigate(['/mascota-list']); // Navega al listado de mascotas
+          this.router.navigate(['/home-secundario']); // Navega al home 2
           this.snackBar.open('Login exitoso', 'Cerrar', { duration: 3000 });
         } else {
           console.error('El token no está presente en la respuesta.');

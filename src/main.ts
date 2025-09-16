@@ -49,7 +49,7 @@ const routes: Route[] = [
   {path: 'recordatorio/recordatorio-add',canActivate: [authGuard], component: AddRecordatorioComponent},  
 
   { path: 'home', component: HomeComponent},
-  { path: 'home-secundario', component: Home2Component}
+  { path: 'home-secundario', canActivate: [authGuard], component: Home2Component}
 ]
 
 

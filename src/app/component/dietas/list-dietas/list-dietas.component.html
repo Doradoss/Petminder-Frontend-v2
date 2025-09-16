@@ -3,7 +3,7 @@
   <div class="titulo">Listado de Dietas</div>
   
   <!-- Formulario para buscar por fecha -->
-  <form [formGroup]="formFecha" (ngSubmit)="cargarDietasPorFecha()" style="display: flex; gap: 10px; align-items: center;">
+  <form [formGroup]="formFecha" (ngSubmit)="cargarDietasPorFecha()" class="form-busqueda">
     <mat-form-field>
       <mat-label>Fecha de creación*</mat-label>
       <input matInput [matDatepicker]="picker" formControlName="fecha" />
@@ -22,15 +22,19 @@
   </form>
 
   <!-- Listado de dietas -->
-  <div *ngFor="let dieta of dietas" class="dieta-card" (click)="toggleIndicaciones(dieta.id)">
-    <div class="dieta-info">
-      <div class="dieta-nombre">
-        {{ dieta.nombre }} <span *ngIf="dieta.fecha_creacion">({{ dieta.fecha_creacion | date: 'shortDate' }})</span>
-      </div>
-      <div class="dieta-indicaciones" *ngIf="dieta.expandida">
-        {{ dieta.indicaciones }}
-      </div>
+  <mat-expansion-panel *ngFor="let dieta of dietas">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ dieta.nombre }} &nbsp; <span *ngIf="dieta.fecha_creacion">({{ dieta.fecha_creacion | date: 'shortDate' }})</span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+  
+    <!-- Contenido dentro del panel -->
+    <div class="dieta-indicaciones">
+      <p>{{ dieta.indicaciones }}</p>
     </div>
+  
+    <!-- Botones de acción -->
     <div class="dieta-actions">
       <button mat-icon-button color="warn" (click)="deleteDieta(dieta.id)">
         <mat-icon>delete</mat-icon>
@@ -39,7 +43,7 @@
         <mat-icon>edit</mat-icon>
       </button>
     </div>
-  </div>
+  </mat-expansion-panel>
 
   <button routerLink="/dieta-add" class="button-general add-dieta-button">Agregar dieta</button>
 </div>

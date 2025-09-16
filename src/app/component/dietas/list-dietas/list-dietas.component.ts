@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { Component} from '@angular/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,7 +14,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NavbarHomeComponent } from '../../navbar-home/navbar-home.component';
-
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-list-dietas',
@@ -34,7 +34,8 @@ import { NavbarHomeComponent } from '../../navbar-home/navbar-home.component';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    NavbarHomeComponent
+    NavbarHomeComponent,
+    MatExpansionModule,
   ]
 })
 export class ListDietasComponent {
@@ -100,14 +101,5 @@ export class ListDietasComponent {
       this.dietas = dietas;
       this.mostrarBotonListadoGeneral = false; // Ocultar el botón al volver al listado general
     });
-  }
-  toggleIndicaciones(id: number): void {
-    for (let dieta of this.dietas) {
-      if (dieta.id === id) {
-        dieta.expandida = !dieta.expandida; // Alternar la dieta seleccionada
-      } else {
-        dieta.expandida = false; // Colapsar todas las demás
-      }
-    }
   }
 }

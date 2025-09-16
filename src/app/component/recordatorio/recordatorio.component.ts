@@ -19,6 +19,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { TipoRecordatorio } from '../../model/tiporecordatorio';
 import { TiporecordatorioService } from '../../service/tiporecordatorio.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @Component({
@@ -33,7 +34,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     MatCheckboxModule,
     MatSidenavModule,
     NavbarHomeComponent,     
-    MatSelectModule      
+    MatSelectModule,
+    MatExpansionModule,      
   ],
   templateUrl: './recordatorio.component.html',
   styleUrl: './recordatorio.component.css'
@@ -71,14 +73,50 @@ export class RecordatorioComponent implements OnInit {
     
   }
 
-
-
-  getID() {
-    return this.userId = this.userService.getIdByUsername(this.username).subscribe(data => {
-      this.userId = data.id;
+  ngOnInit(): void {
+    // Carga el username desde sessionStorage
+    this.username = sessionStorage.getItem('username');
+    console.log('Username cargado desde sessionStorage:', this.username); // Depuración
+  
+    if (!this.username) {
+      console.error('El username no está definido. Redirigiendo al login...');
+      // Redirige al login si no hay un username
+      this.router.navigate(['/login']);
+      return;
+    }
+  
+    // Carga los datos del usuario
+    this.cargarData();
+  
+    // Carga los tipos de recordatorio
+    this.tipoRecordatorioService.findAll().subscribe({
+      next: (tipos) => {
+        this.tiposRecordatorio = tipos;
+        console.log('Tipos de recordatorio cargados:', tipos);
+      },
+      error: (error) => {
+        console.error('Error al cargar los tipos de recordatorio:', error);
+      },
     });
   }
 
+
+  getID() {
+    if (!this.username) {
+      console.error('El username es null o undefined');
+      return;
+    }
+  
+    this.userService.getIdByUsername(this.username).subscribe({
+      next: (data) => {
+        this.userId = data.id;
+        console.log('User ID obtenido:', this.userId);
+      },
+      error: (err) => {
+        console.error('Error al obtener el ID del usuario:', err);
+      },
+    });
+  }
   calcularTotales(): void {
     this.recordatoriosPendientes = this.recordatorioUsuario.filter(r => !r.completado).length;
     this.recordatoriosCompletados = this.recordatorioUsuario.filter(r => r.completado).length;
@@ -92,49 +130,59 @@ export class RecordatorioComponent implements OnInit {
   }
 
   cargarData(): void {
-    this.userService.getIdByUsername(this.username).subscribe(data => {  // trae el id del username del token
-      this.userId = data.id;  //recibe el id
-      this.mascotaService.getMascotabyduenio(this.userId).subscribe(mascotas => {
-        this.mascotas = mascotas;
-      });  //Prueba
-      this.recordatorioService.recordatorioUsuario(this.userId).subscribe({
-        next: (data) => {          
-          this.recordatorioUsuario = data;
-          this.calcularTotales();
-          console.log('Recordatorio del usuario fueron cargados',data);
-        },
-        error: (err) => console.error('Cargar el usuario', err),
-          
-      });      
-      
-    });    
+    console.log('Cargando datos para el username:', this.username); // Depuración
+  
+    this.userService.getIdByUsername(this.username).subscribe({
+      next: (data) => {
+        this.userId = data.id; // Asigna el ID obtenido
+        console.log('User ID obtenido:', this.userId);
+  
+        // Carga las mascotas usando el userId
+        this.mascotaService.getMascotabyduenio(this.userId).subscribe({
+          next: (mascotas) => {
+            this.mascotas = mascotas; // Asigna las mascotas obtenidas
+            console.log('Mascotas cargadas:', this.mascotas);
+          },
+          error: (err) => {
+            console.error('Error al cargar mascotas:', err);
+          },
+        });
+  
+        // Carga los recordatorios del usuario
+        this.recordatorioService.recordatorioUsuario(this.userId).subscribe({
+          next: (data) => {
+            this.recordatorioUsuario = data;
+            this.calcularTotales(); // Calcula totales pendientes y completados
+            console.log('Recordatorios cargados:', data);
+          },
+          error: (err) => {
+            console.error('Error al cargar recordatorios:', err);
+          },
+        });
+      },
+      error: (err) => {
+        console.error('Error al obtener el ID del usuario:', err);
+      },
+    });
   }
 
-  ngOnInit(): void {
-    this.cargarData();
-    // Tipos de recordatorio
-  this.tipoRecordatorioService.findAll().subscribe({
-    next: (tipos) => {
-      this.tiposRecordatorio = tipos;
-    },
-    error: (error) => {
-      console.error('Error al cargar los tipos de recordatorio:', error);
-    },
-  });  
-    
-  } 
-
-  listarRecordatorios(idMascota:number): void {  
+  
+  listarRecordatorios(idMascota: number): void {
+    console.log('ID de la mascota seleccionada:', idMascota); // Depuración
     const mascota = this.mascotas.find((mascota) => mascota.id === idMascota);
-    this.selectedMascota = mascota ? mascota.nombre : 'Desconocida';    
-    this.recordatorioService.listarRecordatorioPorMascota(idMascota).subscribe({      
+    this.selectedMascota = mascota ? mascota.nombre : 'Desconocida';
+    console.log('Mascota seleccionada:', this.selectedMascota); // Depuración
+  
+    this.recordatorioService.listarRecordatorioPorMascota(idMascota).subscribe({
       next: (recordatorios) => {
-        this.recordatoriosActuales = recordatorios;        
-        console.log('Recordatorios cargados:', recordatorios);
+        this.recordatoriosActuales = recordatorios;
+        console.log('Recordatorios cargados:', this.recordatoriosActuales); // Depuración
       },
-      error: (err) => console.error('Error al cargar recordatorios:', err),
+      error: (err) => {
+        console.error('Error al cargar recordatorios:', err);
+      },
     });
-  } 
+  }
 
   seleccionarMascotaPorId(id: number): void {
     this.mascotaSeleccionada = this.mascotas.find((mascota) => mascota.id === id) || null;
@@ -170,6 +218,12 @@ export class RecordatorioComponent implements OnInit {
       this.router.navigate(['/recordatorio/recordatorio-add'], {
         queryParams: { idMascota: this.mascotaSeleccionada.id, userId: this.userId }
       });
+    }
+    formatHora(hora: string): string {
+      const [hours, minutes] = hora.split(':').map(Number);
+      const date = new Date();
+      date.setHours(hours, minutes);
+      return date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
     }
 
 }

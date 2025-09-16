@@ -125,7 +125,7 @@ export class AddRecordatorioComponent implements OnInit {
     tipo_recordatorio_id: this.recordatorioForm.value.tipoRecordatorioId,  
     usuario_id: this.recordatorioForm.value.userId,  
     mascota_id: this.recordatorioForm.value.mascotaId,  
-    time: new Date(`1970-01-01T${this.recordatorioForm.value.hora}:00Z`),  // Convertir la hora a Date
+    time: this.recordatorioForm.value.hora + ':00',  // Convertir la hora a Date
   };
 
     console.log('Recordatorio a registrar:', recordatorioData);

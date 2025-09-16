@@ -1,36 +1,39 @@
-
 <app-navbar-home></app-navbar-home>
 <div class="main-container">
-    <!-- Formulario de agregar/editar tipo de recordatorio (a la derecha) -->
-    <div class="form-container">
-      <h2>{{ isEdit ? 'Editar' : 'Agregar' }} Tipo de Recordatorio</h2>
-      <form (ngSubmit)="createTipoRecordatorio()">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" [(ngModel)]="tipoRecordatorio.nombre" name="nombre" required />
-    
-        <label for="descripcion">Descripción:</label>
-        <input type="text" id="descripcion" [(ngModel)]="tipoRecordatorio.descripcion" name="descripcion" required />
-    
-        <button type="submit">{{ isEdit ? 'Actualizar' : 'Agregar' }}</button>
-      </form>
-    </div>
-    
-    <!-- Lista de tipos de recordatorio (a la izquierda) -->
-    <div class="list-container">
-      <h3>Lista de Tipos de Recordatorio</h3>
-      <ul>
-        <li *ngFor="let tipo of tiposRecordatorio">
-          <span>{{ tipo.nombre }} - {{ tipo.descripcion }}</span>        
-          <div class="action-buttons">
-            <button (click)="editTipoRecordatorio(tipo)" class="edit">
-              <span class="material-icons">edit</span>
-            </button>
-            <button (click)="deleteTipoRecordatorio(tipo.id)" class="delete">
-              <span class="material-icons">delete</span>
-            </button>
-          </div>
-        </li>
-      </ul>
-            
-    </div>
+  <!-- Lista de tipos de recordatorio -->
+  <div class="list-container">
+    <h3>Lista de Tipos de Recordatorio</h3>
+    <ul>
+      <li *ngFor="let tipo of tiposRecordatorio">
+        <span>{{ tipo.nombre }} - {{ tipo.descripcion }}</span>
+        <div class="action-buttons">
+          <button (click)="editTipoRecordatorio(tipo)" class="edit">
+            <span class="material-icons">edit</span>
+          </button>
+          <button (click)="deleteTipoRecordatorio(tipo.id)" class="delete">
+            <span class="material-icons">delete</span>
+          </button>
+        </div>
+      </li>
+    </ul>
   </div>
+
+  <!-- Formulario -->
+  <div class="form-container">
+    <h2>{{ isEdit ? 'Editar' : 'Agregar' }} Tipo de Recordatorio</h2>
+    <form (ngSubmit)="createTipoRecordatorio()">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" [(ngModel)]="tipoRecordatorio.nombre" name="nombre" required />
+
+      <label for="descripcion">Descripción:</label>
+      <input type="text" id="descripcion" [(ngModel)]="tipoRecordatorio.descripcion" name="descripcion" required />
+
+      <button type="submit">{{ isEdit ? 'Actualizar' : 'Agregar' }}</button>
+    </form>
+  </div>
+
+  <!-- Imagen al final -->
+  <div class="image-container">
+    <img src="img/perros3.png" alt="Descripción de la imagen" />
+  </div>
+</div>

@@ -1,81 +1,89 @@
-/* Contenedor principal */
 .dietas-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+  max-width: 800px; /* Define un ancho máximo */
+  margin: 0 auto; /* Centra el contenedor */
+  text-align: center; /* Centra el texto y botones */
+  padding: 20px; /* Espaciado interno */
+  background-color: #fff; /* Fondo blanco */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Título */
+.titulo {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 /* Formulario de búsqueda */
 form {
   display: flex;
   justify-content: center;
+  gap: 10px; /* Espaciado entre elementos */
   margin-bottom: 20px;
-  gap: 10px;
+}
+.form-busqueda {
+  display: flex;
+  gap: 10px; /* Espaciado entre elementos */
+  align-items: center; /* Alineación vertical */
+  justify-content: center; /* Centrado horizontal */
+  margin-bottom: 20px; /* Espaciado inferior del formulario */
 }
 
-/* Título */
-.titulo {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 20px 0;
+/* Listado de dietas */
+.dieta-list {
+  margin-top: 20px;
 }
 
-/* Estilo de las tarjetas */
-.dieta-card {
-  width: 80%;
+.mat-expansion-panel {
   margin-bottom: 10px;
   background-color: #fdd835;
-  padding: 15px;
-  border-radius: 8px;
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+.mat-panel-title {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+  font-size: 1.2rem; /* Tamaño del texto */
 }
 
-.dieta-card:hover {
-  transform: scale(1.02);
-}
-
-/* Información de cada dieta */
-.dieta-info {
-  flex-grow: 1;
-}
-
-.dieta-nombre {
-  font-weight: bold;
-}
-
-.dieta-indicaciones {
-  font-size: 14px;
+.mat-panel-title span {
+  font-size: 0.95rem; /* Tamaño ligeramente menor para la fecha */
   color: #555;
+  margin-left: 5px; /* Espaciado entre el nombre y la fecha */
 }
 
-/* Botones de acciones */
+/* Contenido dentro del panel */
+.dieta-indicaciones {
+  text-align: justify; /* Alinea el texto de forma justificada */
+  font-size: 1rem; /* Tamaño de texto estándar */
+  color: black; /* Color del texto */
+  margin: 0; /* Margen ajustado */
+  padding: 10px; /* Añade algo de espacio interno para que no se vea tan pegado */
+}
+
+/* Botones de acción */
 .dieta-actions {
   display: flex;
+  justify-content: flex-end;
   gap: 10px;
+  margin-top: 10px;
 }
 
-/* Estilo de botones generales */
+/* Botones generales */
 .button-general {
-  padding: 10px 20px; /* Incrementa el tamaño del botón */
-  font-size: 16px; /* Aumenta el tamaño del texto */
-  border-radius: 8px; /* Menos redondeado para un estilo más elegante */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aumenta la sombra para más profundidad */
-  transition: transform 0.2s ease, background-color 0.3s ease; /* Añade animación */
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 .button-general:hover {
   background-color: #fbc02d;
-  transform: scale(1.05); /* Agranda ligeramente el botón al pasar el mouse */
+  transform: scale(1.05);
 }
 
-.button-general:active {
-  transform: scale(0.95); /* Da un efecto de clic */
-}
 /* Específico para el botón de agregar dieta */
 .add-dieta-button {
   background-color: #fdd835;
@@ -94,6 +102,4 @@ form {
   background-color: #fdd835;
   margin-bottom: 20px; /* Añade margen inferior para separar del listado */
 }
-
-
 

@@ -1,123 +1,118 @@
-
 .main-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    margin: 20px;
-  }
-  
-  /* Form Tipo de Recodatorio*/
-  .form-container {
-    width: 400px;
-    padding: 20px;
-    background-color: #FBC43C;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-container h2 {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-  }
-  
-  .form-container form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-container label {
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-  
-  .form-container input {
-    padding: 10px;
-    margin-bottom: 15px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .form-container button {
-    padding: 10px 15px;
-    background-color: #6a1b9a;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-    align-self: center;
-  }
-  
-  .form-container button:hover {
-    background-color: #4a148c;
-  }
-  
-  
-  .list-container {
-    width: 600px;
-    padding: 20px;
-    background-color: #FBC43C;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .list-container h3 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-  }
-  
-  .list-container ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .list-container li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    font-size: 16px;
-  }
-  
-  .list-container .action-buttons button {
-    background-color: transparent;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-  }
-  
-  .list-container .action-buttons button:hover {
-    opacity: 0.7;
-  }
-  
-  .list-container button.edit {
-    color: #4CAF50;
-  }
-  
-  .list-container button.delete {
-    color: #f44336;
-  }
-  
-  mat-paginator {
-    margin-top: 20px;
-    background-color: #fff;
-    border-radius: 4px;
-  }
-  
-  /* Diseño responsivo */
-  @media (max-width: 768px) {
-    .main-container {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .form-container, .list-container {
-      width: 100%;
-    }
-  }
+  width: 80%; /* Reduce el ancho total */
+  max-width: 900px; /* Limita el ancho máximo */
+  margin: 20px auto; /* Centra el contenido */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Lista de tipos de recordatorio */
+.list-container {
+  background-color: #ffe066;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.list-container h3 {
+  text-align: center;
+  color: #5a189a;
+  font-size: 1.5rem; /* Tamaño más compacto */
+}
+
+.list-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list-container li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Botones de acción */
+.action-buttons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 5px;
+  font-size: 1rem; /* Ajuste del tamaño */
+}
+
+.action-buttons .edit {
+  color: #4caf50;
+}
+
+.action-buttons .edit:hover {
+  color: #388e3c;
+}
+
+.action-buttons .delete {
+  color: #f44336;
+}
+
+.action-buttons .delete:hover {
+  color: #d32f2f;
+}
+
+/* Formulario de agregar/editar */
+.form-container {
+  background-color: #ffe066;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+  text-align: center;
+  color: #5a189a;
+  font-size: 1.5rem; /* Tamaño más compacto */
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-container button {
+  background-color: #5a189a;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.form-container button:hover {
+  background-color: #7b2cbf;
+}
+
+/* Contenedor de la imagen */
+.image-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.image-container img {
+  max-width: 100%; /* Se adapta al tamaño del contenedor */
+  height: auto;
+  border-radius: 10px; /* Bordes redondeados */
+}
